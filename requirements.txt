@@ -1,0 +1,6 @@
+bs4==0.0.1
+beautifulsoup4==4.5.3
+gevent==1.2.1
+greenlet==0.4.11
+requests==2.11.1
+matplotlib==2.1.0
