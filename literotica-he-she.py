@@ -76,7 +76,7 @@ def download_all_articles(page_url):
 
 
 def process_article(filename):
-    with open(filename) as f:
+    with open('articles/' + filename) as f:
         for line in f:
             translator = str.maketrans('', '', string.punctuation)
             line = line.translate(translator)
@@ -108,11 +108,13 @@ def draw_absolute():
     bar_width = 0.35
     index = list(range(len(data)))
     matplotlib.rcParams['font.size'] = 8
+    matplotlib.rcParams["figure.figsize"] = [16, 4.8]
     rects1 = plt.bar(index, list(map(lambda x: x[1], data)), bar_width, color='#0072BC', label='He')
     rects2 = plt.bar(list(map(lambda x: x + bar_width, index)), 
                      list(map(lambda x: x[2], data)), bar_width, color='#ED1C24', label='She')
     plt.xticks(list(map(lambda x: x + bar_width, index)), list(map(lambda x: x[0], data)))
     plt.savefig('absolute.png')
+    plt.close()
 
 
 def draw_difference():
@@ -140,7 +142,7 @@ def draw_difference():
 
 
 def main():
-    download_all_articles('https://www.literotica.com/top/NonConsent-Reluctance-13/alltime/?page=1')
+    # download_all_articles('https://www.literotica.com/top/NonConsent-Reluctance-13/alltime/?page=1')
     explore_articles()
     draw_absolute()
     draw_difference()
